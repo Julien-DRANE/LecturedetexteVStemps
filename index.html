@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estimateur de temps de lecture</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-card">
+        <p class="eyebrow">Lecture orale</p>
+        <h1>Estime la durée d’un texte déclamé à voix haute.</h1>
+        <p class="intro">
+          Colle ton texte, choisis ton rythme, puis ajuste les pauses pour
+          obtenir une estimation réaliste de la durée de prise de parole.
+        </p>
+
+        <div class="result-panel" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Durée estimée</span>
+            <strong id="estimated-time">0 min 00 s</strong>
+          </div>
+          <div class="result-grid">
+            <div>
+              <span>Mots</span>
+              <strong id="word-count">0</strong>
+            </div>
+            <div>
+              <span>Caractères</span>
+              <strong id="char-count">0</strong>
+            </div>
+            <div>
+              <span>Temps de parole pur</span>
+              <strong id="speech-time">0 min 00 s</strong>
+            </div>
+            <div>
+              <span>Temps de pauses</span>
+              <strong id="pause-time">0 min 00 s</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace-card">
+        <label class="field-label" for="speech-text">Texte à lire</label>
+        <textarea
+          id="speech-text"
+          placeholder="Colle ici ton discours, ta présentation, ton slam, ton exposé..."
+        ></textarea>
+
+        <div class="controls">
+          <div class="control-card">
+            <label for="wpm">Vitesse d’élocution</label>
+            <input id="wpm" type="range" min="80" max="220" step="5" value="130" />
+            <div class="control-meta">
+              <span>Lente</span>
+              <strong><span id="wpm-value">130</span> mots/min</strong>
+              <span>Rapide</span>
+            </div>
+          </div>
+
+          <div class="control-card">
+            <label for="pause-seconds">Pauses ajoutées</label>
+            <input
+              id="pause-seconds"
+              type="range"
+              min="0"
+              max="180"
+              step="5"
+              value="15"
+            />
+            <div class="control-meta">
+              <span>Aucune</span>
+              <strong><span id="pause-value">15</span> sec</strong>
+              <span>Très posée</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="preset-row" aria-label="Rythmes conseillés">
+          <button class="preset is-active" data-wpm="130">Conversation</button>
+          <button class="preset" data-wpm="110">Discours posé</button>
+          <button class="preset" data-wpm="150">Présentation dynamique</button>
+          <button class="preset" data-wpm="170">Débit soutenu</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
